@@ -34,7 +34,7 @@ def main(args):
         metric_rouge, metric_bertscore = evaluate.load("rouge"), evaluate.load("bertscore")
         max_in, max_out = 1024, 128
     else:
-        dataset = load_dataset("wmt16", "ro-en", split="test", streaming=True)
+        dataset = load_dataset("wmt/wmt16", "ro-en", split="test", streaming=True)
         tokenizer.src_lang, tokenizer.tgt_lang = "en_XX", "ro_RO"
         metric_bleu, metric_bertscore = evaluate.load("sacrebleu"), evaluate.load("bertscore")
         max_in, max_out = 128, 128
