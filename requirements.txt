@@ -1,0 +1,35 @@
+# Core
+#
+# NOTE: WeaveMark requires a CUDA GPU (models are loaded 4-bit quantized via
+# bitsandbytes, which has no CPU backend). `pip install torch` serves a
+# CPU-only wheel on Windows, and the wheel must ship kernels for your GPU's
+# architecture -- RTX 50-series (Blackwell, sm_120) needs torch >= 2.7 built
+# against CUDA >= 12.8. Install the matching build from https://pytorch.org
+# BEFORE running this file, e.g. for Blackwell:
+#   pip install torch --index-url https://download.pytorch.org/whl/cu128
+torch
+transformers
+numpy
+scipy
+pandas
+tqdm
+
+# Data loading / text
+datasets
+ftfy
+nltk
+
+# 4-bit quantization + multi-GPU placement (generation & perplexity)
+bitsandbytes
+accelerate
+
+# Tokenizers for T5-XXL (DIPPER) and mBART
+sentencepiece
+protobuf
+
+# Downstream quality metrics (evaluate_downstream.py)
+evaluate
+bert_score
+sacrebleu
+rouge_score
+absl-py
