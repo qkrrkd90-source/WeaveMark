@@ -160,6 +160,8 @@ def extract_bits(tokens, processor, codeword_len, k, num_layers,
         all_indices = np.arange(codeword_len)
         rng_bit.shuffle(all_indices)
         chosen_bits_idx = all_indices[:k]
+        if not getattr(processor, "layer_shuffle", True):
+            chosen_bits_idx = np.sort(chosen_bits_idx)
 
         # must mirror embedding
         layer_indices = np.arange(num_layers)

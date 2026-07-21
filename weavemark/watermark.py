@@ -239,6 +239,8 @@ class WeaveMark(LogitsProcessor):
                 all_indices = np.arange(codeword_len)
                 rng_bit_idx.shuffle(all_indices)
                 chosen_bits_idx = all_indices[:k]
+                if not self.layer_shuffle:
+                    chosen_bits_idx = np.sort(chosen_bits_idx)
 
                 # spread layer->bit; without it layer j always carries bit j
                 layer_indices = np.arange(num_multibit)
